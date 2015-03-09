@@ -24,7 +24,7 @@ public class Main {
         MetodosTwitter twit = new MetodosTwitter();
         int op;
         do {
-            op = Integer.parseInt(JOptionPane.showInputDialog("opciones: \n1 --> TimeLine\n2 --> Buscar\n3 --> Tweettear\n4 --> Exit"));
+            op = Integer.parseInt(JOptionPane.showInputDialog("opciones: \n1 --> TimeLine\n2 --> Buscar\n3 --> Tweettear\n4 --> DirectMsg\n5 --> Exit"));
             switch (op) {
                 case 1:
                     twit.timeLine();
@@ -36,6 +36,9 @@ public class Main {
                     twit.tweet();
                     break;
                 case 4:
+                    twit.directMsg();
+                    break;
+                case 5:
                     System.exit(0);
                 default:
                     System.exit(0);

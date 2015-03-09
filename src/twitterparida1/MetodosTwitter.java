@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import twitter4j.DirectMessage;
 import twitter4j.Query;
 import twitter4j.QueryResult;
 import twitter4j.Status;
@@ -27,10 +28,10 @@ public class MetodosTwitter {
     public MetodosTwitter() {
 
         cb.setDebugEnabled(true)
-                .setOAuthConsumerKey("CnsumerKey")
-                .setOAuthConsumerSecret("ConsumerSecret")
-                .setOAuthAccessToken("AccessToken")
-                .setOAuthAccessTokenSecret("AccessTokenSecret");
+                .setOAuthConsumerKey("kVeUkuBbS7E4m2BzzqKTCa00t")
+                .setOAuthConsumerSecret("znSSjhVZhkjBBsNy9C7YSgclTO14eFFz0FXYBlCGxb0bKn3hXC")
+                .setOAuthAccessToken("180784730-3sKIMf2JHiL0DnzDoGQ0Lzn2ES4xFo5bTOTIrVtv")
+                .setOAuthAccessTokenSecret("kTXQAcbRbzBPi6pjttzgxEU9AhH6USs5uaX8qm1JxuD6S");
         twitter = new TwitterFactory(cb.build()).getInstance();
     }
 
@@ -82,4 +83,18 @@ public class MetodosTwitter {
             Logger.getLogger(MetodosTwitter.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    /**
+     * Manda mensaje directo (solo si ambos sois amiwis)
+     * @throws TwitterException 
+     */
+    public void directMsg() throws TwitterException {
+
+        String nombre = JOptionPane.showInputDialog("Nombre:");
+        String msg = JOptionPane.showInputDialog("Mensaje:");
+        DirectMessage message = twitter.sendDirectMessage(nombre, msg);
+        System.out.println("Sent: " + message.getText() + " to @" + message.getRecipientScreenName());
+
+    }
+
 }
